@@ -39,18 +39,115 @@
     https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors
 */
 
-.two-column-grid__expand-two {}
+.two-column-grid__expand-two {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  gap: 5px
+}
 
-.three-column-grid {}
+.three-column-grid {
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+}
 
-.three-column-grid__expand-two {}
+.three-column-grid__expand-two {
+  display: grid;
+  grid-template-columns: 50px 1fr 50px;
+  gap:5px
+}
 
-.five-column-grid {}
+.five-column-grid {
+  display:grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
+}
 
-.center-grid {}
+.center-grid {
+  display: grid;
+  grid-template-columns: 200px;
+  place-content: center;
+}
 
-.grid-in-grid-1 {}
+.grid-in-grid-1 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px
+}
 
-.grid-in-grid-2 {}
+.grid-in-grid-1 > .box:first-of-type{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
 
-.grid-madness {}
+}
+
+.grid-in-grid-1 > .box:last-of-type{
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+
+.grid-in-grid-2 {
+  display:grid;
+  grid-template-columns: 80px 1fr 180px;
+
+}
+
+.grid-in-grid-2 > .box:last-of-type{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+}
+
+.grid-madness {
+  display:grid;
+  grid-template-areas: 
+  'header header header'
+  'left main right'
+  'footer footer footer';
+  grid-template-columns: 100px 1fr 100px;
+  gap: 10px;
+}
+
+.grid-madness > .box:first-of-type{
+grid-area: header;
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 10px;
+}
+
+.grid-madness > .box:nth-of-type(2){
+  grid-area: right;
+
+}
+
+.grid-madness > .box:nth-of-type(2) > .inner-box{
+  display: grid;
+ grid-template-rows: 400px;
+
+}
+
+.grid-madness > .box:nth-of-type(3){
+  grid-area: left;
+
+}
+
+.grid-madness > .box:nth-of-type(4){
+  grid-area: main;
+  display: grid;
+}
+
+.grid-madness > .box:nth-of-type(4) >.inner-box{
+  display: grid;
+  justify-items: start;
+}
+
+.grid-madness > .box:last-of-type{
+  grid-area: footer;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+
+}
